@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Barras Verticales</title>
+    <style>
+        .bar {
+            width: 20px;
+            height: 0;
+            margin: 5px;
+            transition: height 0.5s;
+        }
+
+        #bar1 {
+            background-color: red;
+        }
+
+        #bar2 {
+            background-color: green;
+        }
+
+        #bar3 {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bar1" class="bar"></div>
+    <div id="bar2" class="bar"></div>
+    <div id="bar3" class="bar"></div>
+
+    <br>
+
+    <button onclick="increasePoints(1)">Aumentar Puntos (Barra 1)</button>
+    <button onclick="clearBar(1)">Limpiar Barra (Barra 1)</button>
+    <button onclick="decreasePoints(1)">Bajar Puntos (Barra 1)</button>
+
+    <br><br>
+
+    <button onclick="increasePoints(2)">Aumentar Puntos (Barra 2)</button>
+    <button onclick="clearBar(2)">Limpiar Barra (Barra 2)</button>
+    <button onclick="decreasePoints(2)">Bajar Puntos (Barra 2)</button>
+
+    <br><br>
+
+    <button onclick="increasePoints(3)">Aumentar Puntos (Barra 3)</button>
+    <button onclick="clearBar(3)">Limpiar Barra (Barra 3)</button>
+    <button onclick="decreasePoints(3)">Bajar Puntos (Barra 3)</button>
+
+    <script>
+    var points = [0, 0, 0]; // Inicializar los puntos de las barras
+    
+    function increasePoints(barIndex) {
+      if (points[barIndex - 1] < 1000) {
+        points[barIndex - 1] += 100;
+        updateBarHeight(barIndex);
+      }
+    }
+    
+    function clearBar(barIndex) {
+      points[barIndex - 1] = 0;
+      updateBarHeight(barIndex);
+    }
+    
+    function decreasePoints(barIndex) {
+      if (points[barIndex - 1] > 0) {
+        points[barIndex - 1] -= 100;
+        updateBarHeight(barIndex);
+      }
+    }
+    
+    function updateBarHeight(barIndex) {
+      var bar = document.getElementById('bar' + barIndex);
+      bar.style.height = points[barIndex - 1] / 10 + 'px';
+    }
+    </script>
+</body>
+
+</html>
